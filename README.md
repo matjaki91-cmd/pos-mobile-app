@@ -1,143 +1,166 @@
-# POS System Mobile App
+# POS Mobile App
 
-A comprehensive Flutter-based Point of Sale (POS) system mobile application for Android and iOS, designed to work seamlessly with the backend API.
+Flutter mobile application for Point of Sale (POS) system.
 
-## Features
+## 🚀 Features
 
-### Core Features (MVP)
-- **Product Management**: Browse and search products from the backend database
-- **Shopping Cart**: Add, remove, and manage items in the shopping cart
-- **Checkout**: Complete purchase transactions with multiple payment methods
-- **Customer Management**: Support for customer selection and credit accounts
-- **Weighable Items**: Special handling for products that require weight measurement
-- **Payment Methods**: Cash, Card, and Credit Account payment options
-- **Order Creation**: Automatic order creation with items and customer information
+- **Product Browsing** - Browse and search products
+- **Shopping Cart** - Add/remove items, adjust quantities
+- **Checkout** - Multiple payment methods (cash, card, credit)
+- **Customer Management** - Track customer credit accounts
+- **Weighing Scale Integration** - Bluetooth connectivity for weighable items
+- **Offline Support** - Basic offline capabilities
+- **Real-time Sync** - Sync with backend API
 
-### Advanced Features (Coming Soon)
-- **Barcode/QR Code Scanning**: Scan products directly into cart
-- **Weighing Scale Integration**: Aclas O2SX and Imin DW1 support
-- **LHDN Integration**: E-invoicing submission and receipt generation
-- **Staff Management**: Check-in/check-out with fingerprint or camera
-- **Inventory Management**: Stock in/out tracking with supplier management
-- **Online Payment**: Integration with payment gateways
-- **E-commerce Sync**: Shopee and TikTok Shop order synchronization
+## 📱 Screenshots
 
-## Project Structure
+Coming soon...
+
+## 🛠️ Tech Stack
+
+- **Framework:** Flutter 3.35.6
+- **Language:** Dart 3.9.2
+- **State Management:** Provider
+- **HTTP Client:** Dio
+- **Bluetooth:** flutter_blue_plus
+- **Storage:** Hive
+
+## 📋 Prerequisites
+
+- Flutter SDK 3.35.6 or higher
+- Dart 3.9.2 or higher
+- Android Studio (for Android development)
+- Xcode (for iOS development, Mac only)
+
+## 🔧 Installation
+
+### 1. Clone Repository
+
+```bash
+git clone https://github.com/matjaki91-cmd/pos-mobile-app.git
+cd pos-mobile-app
+```
+
+### 2. Install Dependencies
+
+```bash
+flutter pub get
+```
+
+### 3. Configure API URL
+
+Edit `lib/config/api_config.dart`:
+
+```dart
+static const String baseUrl = 'https://your-backend-url.com';
+```
+
+### 4. Run App
+
+```bash
+# Run on connected device/emulator
+flutter run
+
+# Run on specific device
+flutter run -d <device_id>
+
+# List available devices
+flutter devices
+```
+
+## 📦 Build APK
+
+### Debug Build
+
+```bash
+flutter build apk --debug
+```
+
+### Release Build
+
+```bash
+flutter build apk --release
+```
+
+APK location: `build/app/outputs/flutter-apk/app-release.apk`
+
+## 🧪 Testing
+
+```bash
+# Run all tests
+flutter test
+
+# Run with coverage
+flutter test --coverage
+```
+
+## 📖 Documentation
+
+- [Deployment Guide](PANDUAN_DEPLOYMENT_MVP.md)
+- [User Guide](PANDUAN_PENGGUNA_POS.md)
+- [Git Setup Guide](PANDUAN_GIT_SETUP.md)
+- [APK Build Guide](CARA_BUILD_APK.md)
+- [Testing Guide](TESTING_GUIDE.md)
+
+## 🏗️ Project Structure
 
 ```
 lib/
-├── main.dart                 # App entry point and routing
-├── config/
-│   └── api_config.dart      # API configuration and endpoints
-├── models/
-│   ├── product.dart         # Product data model
-│   ├── customer.dart        # Customer data model
-│   ├── order.dart           # Order and OrderItem models
-│   └── cart_item.dart       # Shopping cart item model
-├── services/
-│   ├── api_service.dart     # Backend API communication
-│   └── bluetooth_service.dart # Weighing scale Bluetooth integration
-├── providers/
-│   ├── cart_provider.dart   # Cart state management
-│   └── products_provider.dart # Products state management
-├── screens/
-│   ├── home_screen.dart     # Home/dashboard screen
-│   ├── products_screen.dart # Products browsing screen
-│   ├── cart_screen.dart     # Shopping cart screen
-│   └── checkout_screen.dart # Checkout and payment screen
-└── utils/                   # Utility functions and helpers
+├── config/          # Configuration files
+├── models/          # Data models
+├── services/        # Business logic & API
+├── providers/       # State management
+├── screens/         # UI screens
+└── main.dart        # Entry point
 ```
 
-## Getting Started
+## 🔐 Environment Variables
 
-### Prerequisites
-- Flutter SDK 3.9.2 or higher
-- Dart 3.9.2 or higher
-- Android SDK (for Android development)
-- Xcode (for iOS development)
+Create `.env` file (not committed to git):
 
-### Installation
-
-1. Install dependencies:
-   ```bash
-   flutter pub get
-   ```
-
-2. Configure API endpoint in `lib/config/api_config.dart`:
-   ```dart
-   static const String baseUrl = 'https://your-backend-url.com';
-   ```
-
-3. Run the app:
-   ```bash
-   flutter run
-   ```
-
-## API Integration
-
-The app communicates with the backend API using tRPC endpoints. All API calls are handled by the `ApiService` class.
-
-### Available Endpoints
-- Products: `/api/trpc/product.list`, `/api/trpc/product.get`
-- Customers: `/api/trpc/customer.list`, `/api/trpc/customer.get`, `/api/trpc/customer.create`
-- Orders: `/api/trpc/order.list`, `/api/trpc/order.create`
-- Inventory: `/api/trpc/inventory.recordInbound`
-- Credit: `/api/trpc/credit.recordTransaction`
-
-## State Management
-
-Uses Provider package for state management:
-- **CartProvider**: Manages shopping cart state
-- **ProductsProvider**: Manages products and search functionality
-
-## Building for Production
-
-```bash
-# Android
-flutter build apk --release
-
-# iOS
-flutter build ios --release
-
-# Web
-flutter build web --release
+```
+API_BASE_URL=https://your-backend-url.com
 ```
 
-## Dependencies
+## 🤝 Contributing
 
-- `flutter`: Flutter SDK
-- `provider`: State management
-- `dio`: HTTP client
-- `flutter_bluetooth_serial`: Bluetooth communication
-- `barcode_scan2`: Barcode scanning
-- `qr_flutter`: QR code generation
-- `shared_preferences`: Local storage
-- `hive`: Local database
-- `pdf`: PDF generation
-- `printing`: Print functionality
-- `google_fonts`: Font management
-- `intl`: Internationalization
-- `connectivity_plus`: Network connectivity
-- `flutter_local_notifications`: Local notifications
+1. Fork the repository
+2. Create feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit changes (`git commit -m 'Add amazing feature'`)
+4. Push to branch (`git push origin feature/amazing-feature`)
+5. Open Pull Request
 
-## Troubleshooting
+## 📝 License
 
-- **API Connection Issues**: Verify backend server is running and API URL is correct
-- **Bluetooth Issues**: Enable Bluetooth and ensure scale is paired
-- **Build Issues**: Run `flutter clean` and `flutter pub get`
+This project is proprietary and confidential.
 
-## Future Enhancements
+## 📞 Support
 
-- Offline mode with local sync
-- Advanced barcode scanning
-- Weighing scale real-time display
-- LHDN e-invoicing
-- Staff management
-- E-commerce integration
-- Advanced analytics
-- Multi-language support
-- Dark mode
+For support, email support@yourcompany.com
 
-## License
+## 🎯 Roadmap
 
-Proprietary and Confidential
+- [x] Basic POS flow
+- [x] Product management
+- [x] Customer credit system
+- [ ] Weighing scale integration (testing)
+- [ ] LHDN e-invoicing
+- [ ] Receipt printing
+- [ ] Barcode scanning
+- [ ] Staff management
+- [ ] E-commerce integration (Shopee, TikTok)
+
+## 👥 Authors
+
+- **Development** - Manus AI
+- **Project Owner** - matjaki91-cmd
+
+## 🙏 Acknowledgments
+
+- Flutter team for the amazing framework
+- All contributors and testers
+
+---
+
+**Version:** 1.0.0  
+**Last Updated:** October 2024
