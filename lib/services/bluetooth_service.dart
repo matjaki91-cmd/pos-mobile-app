@@ -47,8 +47,9 @@ class BluetoothService {
       );
       
       // Initialize connection based on device type
-      if (device.name?.toUpperCase().contains('ACLAS') ?? false || 
-          device.name?.toUpperCase().contains('OS2') ?? false) {
+      final deviceNameUpper = device.name?.toUpperCase();
+      if ((deviceNameUpper?.contains('ACLAS') ?? false) || 
+          (deviceNameUpper?.contains('OS2') ?? false)) {
         await _initializeAclasScale();
       }
       
@@ -85,11 +86,12 @@ class BluetoothService {
   /// Handle incoming data from the scale
   void _handleData(Uint8List data) {
     try {
-      if (connectedDeviceName?.toUpperCase().contains('ACLAS') ?? false ||
-          connectedDeviceName?.toUpperCase().contains('OS2') ?? false) {
+      final deviceNameUpper = connectedDeviceName?.toUpperCase();
+      if ((deviceNameUpper?.contains('ACLAS') ?? false) ||
+          (deviceNameUpper?.contains('OS2') ?? false)) {
         _parseAclasData(data);
-      } else if (connectedDeviceName?.toUpperCase().contains('IMIN') ?? false ||
-                 connectedDeviceName?.toUpperCase().contains('DW1') ?? false) {
+      } else if ((deviceNameUpper?.contains('IMIN') ?? false) ||
+                 (deviceNameUpper?.contains('DW1') ?? false)) {
         _parseIminData(data);
       } else {
         // Try both parsers
