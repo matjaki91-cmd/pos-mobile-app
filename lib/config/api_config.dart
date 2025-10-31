@@ -1,5 +1,7 @@
 class ApiConfig {
+  // TODO: IMPORTANT! Update this URL before building production APK!
   // Replace with your deployed backend URL
+  // Example: 'https://your-domain.manus.space' or 'https://api.yourcompany.com'
   static const String baseUrl = 'http://localhost:3000';
   
   // API Endpoints

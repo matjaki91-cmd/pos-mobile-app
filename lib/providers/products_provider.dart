@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import '../models/product.dart';
-import '../services/api_service.dart';
+import '../services/supabase_service.dart';
 
 class ProductsProvider extends ChangeNotifier {
-  final ApiService _apiService = ApiService();
+  final SupabaseService _supabase = SupabaseService();
   
   List<Product> _products = [];
   bool _isLoading = false;
@@ -19,7 +19,7 @@ class ProductsProvider extends ChangeNotifier {
     notifyListeners();
 
     try {
-      _products = await _apiService.getProducts();
+      _products = await _supabase.getProducts();
       _error = null;
     } catch (e) {
       _error = e.toString();
@@ -32,7 +32,7 @@ class ProductsProvider extends ChangeNotifier {
 
   Future<Product?> getProductById(String id) async {
     try {
-      return await _apiService.getProductById(id);
+      return await _supabase.getProduct(id);
     } catch (e) {
       _error = e.toString();
       return null;
